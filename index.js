@@ -15,6 +15,13 @@ app.get('/', (req, res) => {
 })
 
 io.on('connection', socket => {
+    socket.on('set username', username => {
+        //socket.username = username
+        console.log(username)
+    })
+})
+
+io.on('connection', socket => {
     socket.on('chat message', msg => {
         io.emit('chat message', msg)
     })
