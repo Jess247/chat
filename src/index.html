@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="styles.css" rel="stylesheet">
+    <title>Chat</title>
+</head>
+<style>
+    
+</style>
+<body>
+    <main class="h-[100vh] flex justify-center items-center">
+        <div class="w-2/3 h-[70vh] flex flex-col justify-between bg-red-300 rounded-lg">
+            <ul 
+                id="messages"
+                class="flex flex-col">
+                
+            </ul>
+            <form 
+                id="form"
+                class="flex justify-center items-baseline gap-2">
+                <input 
+                    type="text"
+                    id="input"
+                    autocomplete="off"
+                    class="mx-0 mb-2 rounded-2xl px-4 py-1 w-[85%]">
+                <button class="bg-green-400 py-1 px-3 rounded ">
+                    Send
+                </button>
+            </form>
+        </div>
+    </main>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        let socket = io()
+
+        let messages = document.getElementById('messages')
+        let form = document.getElementById('form')
+        let input = document.getElementById('input')
+
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            if(input.value) {
+                socket.emit('chat message', input.value)
+                input.value = ''
+            }
+        })
+
+        socket.on('chat message', msg => {
+            let item = document.createElement('li')
+            item.textContent = msg
+            messages.appendChild(item)
+            window.scrollTo(0, document.body.scrollHeight)
+        })
+
+    </script>
+</body>
+</html>
