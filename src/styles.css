@@ -13,6 +13,10 @@ a, button {
   cursor: pointer;
 }
 
+button, input {
+  border: none;
+}
+
 body {
   background: #31363F;
   height: 100vh;
@@ -23,6 +27,7 @@ body {
 
 .main {
   width: 80%;
+  max-width: 800px;
   height: 70%;
   background: #EEEEEE;
   border-radius: 0.5em;
@@ -42,7 +47,7 @@ body {
   display: flex;
   flex-direction: column;
 }
-.messages__item-left {
+.messages__item-left, .messages__item-right {
   margin: 1em;
   width: fit-content;
   padding: 0.5em 1em;
@@ -51,7 +56,7 @@ body {
   background-color: rebeccapurple;
   color: white;
 }
-.messages__item-left::after {
+.messages__item-left::after, .messages__item-right::after {
   content: "";
   width: 1em;
   height: 1em;
@@ -63,25 +68,39 @@ body {
   z-index: 99;
 }
 .messages__item-right {
-  margin: 1em;
-  width: fit-content;
-  padding: 0.5em 1em;
-  border-radius: 1em;
-  position: relative;
-  background-color: rebeccapurple;
-  color: white;
   align-self: flex-end;
 }
-.messages__item-right::after {
-  content: "";
-  width: 1em;
-  height: 1em;
-  border: 0.5em solid transparent;
-  border-top-color: rebeccapurple;
+
+.form {
+  padding: 0.4em 1em;
+  background-color: #31363F;
+  display: flex;
+  justify-content: center;
+  gap: 0.5em;
+  border-bottom-right-radius: 0.5em;
+  border-bottom-left-radius: 0.5em;
+}
+.form .label {
   position: absolute;
-  right: 10px;
-  bottom: -0.8em;
-  z-index: 99;
+  left: 0;
+  opacity: 0;
+}
+.form .input {
+  width: 90%;
+  padding: 0.5em;
+  border-radius: 0.5em;
+}
+.form .btn {
+  padding: 0.5em 0.7em;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 1em;
+  background-color: #80ed99;
+  color: #0e0e0e;
+  transition: all ease-in-out 0.2s;
+}
+.form .btn:hover {
+  transform: scale(1.02);
 }
 
 /*# sourceMappingURL=styles.css.map */

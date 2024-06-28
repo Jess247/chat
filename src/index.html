@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="styles.css" rel="stylesheet">
     <title>Chat</title>
 </head>
@@ -23,40 +24,20 @@
             <form 
                 id="form"
                 class="form">
+                <label for="input" class="label">Message: </label>
                 <input 
                     type="text"
                     id="input"
                     autocomplete="off"
                     class="input">
                 <button class="btn">
-                    Send
+                    <i class="fa-regular fa-paper-plane"></i>
                 </button>
             </form>
         </div>
     </main>
     <script src="/socket.io/socket.io.js"></script>
-    <script>
-        let socket = io()
-
-        let messages = document.getElementById('messages')
-        let form = document.getElementById('form')
-        let input = document.getElementById('input')
-
-        form.addEventListener('submit', e => {
-            e.preventDefault()
-            if(input.value) {
-                socket.emit('chat message', input.value)
-                input.value = ''
-            }
-        })
-
-        socket.on('chat message', msg => {
-            let item = document.createElement('li')
-            item.textContent = msg
-            messages.appendChild(item)
-            window.scrollTo(0, document.body.scrollHeight)
-        })
-
+    <script src="script.js">
     </script>
 </body>
 </html>

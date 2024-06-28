@@ -11,6 +11,7 @@ body {
 
 .main {
     width: 80%;
+    max-width: 800px;
     height: 70%;
     background: $bg-light;
     border-radius: .5em;
@@ -31,7 +32,7 @@ body {
     display: flex;
     flex-direction: column;
 
-    &__item-left  {
+    &__item-left, &__item-right  {
     margin: 1em;
     width: fit-content;
     padding: .5em 1em;
@@ -51,28 +52,47 @@ body {
             bottom: -0.8em;
             z-index: 99;
         }
+
     }
 
-    &__item-right  {
-        margin: 1em;
-        width: fit-content;
-        padding: .5em 1em;
-        border-radius: 1em;
-        position: relative;
-        background-color: rebeccapurple;
-        color: white;
+    &__item-right {
         align-self: flex-end;
-    
-            &::after {
-                content: '';
-                width: 1em;
-                height: 1em;
-                border: 0.5em solid transparent;
-                border-top-color: rebeccapurple;
-                position: absolute;
-                right: 10px;
-                bottom: -0.8em;
-                z-index: 99;
-            }
+    } 
+}
+
+.form {
+    padding: .4em 1em;
+    background-color: $bg-dark;
+    display: flex;
+    justify-content: center;
+    gap: .5em;
+    border-bottom-right-radius: .5em;
+    border-bottom-left-radius: .5em;
+
+    .label {
+        position: absolute;
+        left: 0;
+        opacity: 0;
+    }
+    .input {
+        width: 90%;
+        padding: .5em;
+        border-radius: .5em;
+    }
+
+    .btn {
+        padding: .5em .7em;
+        border-radius: 50%;
+        font-weight: 700;
+        font-size: 1em;
+        background-color: #80ed99;
+        color: $font-dark;
+        transition: all ease-in-out .2s;
+        
+
+        &:hover {
+            transform: scale(1.02);
         }
+    }
+
 }
