@@ -12,15 +12,21 @@ form.addEventListener('submit', e => {
     e.preventDefault()
 
     if(input.value) {
-        socket.emit('chat message', input.value)
-        input.value = ''
+        const msgData = {
+            username: username,
+            message: input.value
+        }
+        socket.emit('chat message', msgData)
+
+        messages.lastChild.scrollIntoView({ behavior: 'smooth' })
     }
 })
 
 socket.on('chat message', msg => {
     let item = document.createElement('li')
-    item.innerHTML = `<span class="messages__name">${username}</span>: <br> ${msg}`
-    item.classList.add('messages__item-right')
+    item.innerHTML = `<span class="messages__name">${msg.username}</span> <br> ${msg.message}`
+    item.className = msg.username === username ? 'messages__item-sent' : 'messages__item-received'
     messages.appendChild(item)
-    window.scrollTo(0, document.body.scrollHeight)
+    item.scrollIntoView({ behavior: 'smooth' })
+    input.value = ''
 })

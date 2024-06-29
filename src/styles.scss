@@ -31,9 +31,10 @@ body {
     list-style: none;
     display: flex;
     flex-direction: column;
+    overflow: scroll;
     
 
-    &__item-left, &__item-right  {
+    &__item-received, &__item-sent  {
     margin: 1em;
     width: fit-content;
     max-width: 45%;
@@ -59,8 +60,13 @@ body {
 
     }
 
-    &__item-right {
+    &__item-sent {
         align-self: flex-end;
+        background-color: #80ed99;
+
+        &::after {
+            border-top-color: #80ed99;
+        }
     } 
 
     &__name {

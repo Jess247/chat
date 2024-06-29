@@ -46,8 +46,9 @@ body {
   list-style: none;
   display: flex;
   flex-direction: column;
+  overflow: scroll;
 }
-.messages__item-left, .messages__item-right {
+.messages__item-received, .messages__item-sent {
   margin: 1em;
   width: fit-content;
   max-width: 45%;
@@ -57,7 +58,7 @@ body {
   background-color: rebeccapurple;
   color: white;
 }
-.messages__item-left::after, .messages__item-right::after {
+.messages__item-received::after, .messages__item-sent::after {
   content: "";
   width: 1em;
   height: 1em;
@@ -68,8 +69,12 @@ body {
   bottom: -0.8em;
   z-index: 99;
 }
-.messages__item-right {
+.messages__item-sent {
   align-self: flex-end;
+  background-color: #80ed99;
+}
+.messages__item-sent::after {
+  border-top-color: #80ed99;
 }
 .messages__name {
   font-size: 0.8rem;
